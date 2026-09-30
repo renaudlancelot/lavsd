@@ -1,0 +1,25 @@
+getBGSdata <- function(){
+    con <- getCON()
+    bg_data <- DBI::dbReadTable(con, "v_bg_final") |>
+        dplyr::rename(treatment = zone,
+               za = zone_alize,
+               nbmw = aedes_albopictus_m,
+               nbms = aedes_albopictus_ms,
+               nbfw = aedes_albopictus_f,
+               nbfs = aedes_albopictus_fs,
+               nbuw = aedes_albopictus_nd,
+               njaune = aedes_albopictus_jaune,
+               norange = aedes_albopictus_orange,
+               nrose = aedes_albopictus_rose,
+               nbleu = aedes_albopictus_bleu,
+               nvert = aedes_albopictus_vert,
+               ngmw = aedes_aegypti_m,
+               ngfw = aedes_aegypti_f,
+               nguw = aedes_aegypti_nd,
+               nqmw = culex_quinquefasciatus_m,
+               nqfw = culex_quinquefasciatus_f,
+               nquw = culex_quinquefasciatus_nd
+               )
+    class(bg_data) <- c("lvlbg", class(bg_data))
+    return(bg_data)
+}

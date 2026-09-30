@@ -1,0 +1,33 @@
+
+
+getBkg <- function(bkg = "r1", pos = c(.75, .05), scalem){
+    r <- raster::raster(paste0("data/", bkg, "_bkg.tif"))
+    e <- raster::extent(r)
+    rx <- e[2] - e[1]
+    x1 <- pos[1]
+    x2 <- x1 + scalem/rx
+    rasterVis::levelplot(r,
+                         margin = F,
+                         scales = list(draw = F),
+                   colorkey = F,
+                   col.regions = grey(seq(.2, .95, .005)),
+                   xlab = '',
+                   ylab = '') +
+        latticeExtra::layer(
+                          panel.scaleArrow(
+                              x = c(x1, x2),
+                              y = pos[2],
+                              col = "white",
+                              lwd =3,
+                              angle = 0,
+                              label = paste(scalem, "m"),
+                              col.text = "white",
+                              adj = c(.5, -.5),
+                              cex = .8),
+                          data = list(pos = pos,
+                                      x1 = x1,
+                                      x2 = x2,
+                                      scalem = scalem),
+                          packets = 1)
+
+}

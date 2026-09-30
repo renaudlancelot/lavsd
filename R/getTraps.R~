@@ -1,0 +1,5 @@
+getTraps <- function(){
+    con <- getCON()
+    sf::st_read(con, layer = "pieges") %>%
+        mutate(treatment = traitement)
+    }

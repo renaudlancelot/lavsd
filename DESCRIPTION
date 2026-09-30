@@ -1,0 +1,37 @@
+Package: lavsd
+Title: Importation de données pour estimer les densités de moustiques
+Version: 0.0.0.9000
+Authors@R: c(
+    person("Renaud", "Lancelot", , "renaud.lancelot@gmail.com", role = c("aut", "cre")),
+    person(, "Cirad", role = "cph")
+  )
+Description: Ce package rassemble les fonctions pour importer depuis la base de données Laveval les données nécessaires à l'estimation des densités de moustiques et du taux de suppression des populations exposées au programme de LAV.
+License: MIT + file LICENSE
+Config/roxygen2/version: 8.1.0
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+Language: fr
+Suggests: 
+    bookdown,
+    knitr,
+    lattice,
+    rmarkdown,
+    sp,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Imports: 
+    DBI,
+    dplyr (>= 0.8),
+    latticeExtra,
+    magrittr,
+    missForest,
+    raster,
+    rasterVis,
+    reshape2,
+    RPostgres,
+    sf,
+    utils
+Depends: 
+    R (>= 3.5)
+LazyData: true
+VignetteBuilder: knitr
